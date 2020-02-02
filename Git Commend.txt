@@ -1,0 +1,36 @@
+https://www.youtube.com/watch?v=4KdGgGsIDeA
+
+git init                                                  == Creating Initial File
+git config --global user.name "Shakir Ahmad"              == Assign your name
+git config --global user.email "shakirahmad84@gmail.com"  == Assign your email
+git config --list
+
+clear
+git status
+git add cold.txt
+git add .
+git commit -m "write your comment"
+
+git log
+git log --oneline
+
+git checkout 43d2b7e                                     == go to previous stage
+git checkout 'master'                                    == return to main stage
+
+git diff                                                 == See the difference
+git show bae9ab8                                         == to See the changes
+git diff 577cec2 bae9ab8                                 == To see changes between to stage
+git diff --staged
+
+
+
+
+
+
+
+
+
+
+
+
+
