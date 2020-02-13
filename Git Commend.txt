@@ -9,7 +9,9 @@ clear
 git status
 git add cold.txt
 git add .
-git commit -m "write your comment"
+git commit -m "first commit"
+git remote add origin https://github.com/shakirahmad84/cheatsheet.git
+git push -u origin master
 
 git log
 git log --oneline
