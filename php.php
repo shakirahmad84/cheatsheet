@@ -59,6 +59,7 @@ echo $x;
  
  $apple = new Fruit();
  $banana = new Fruit();
+
  $apple->set_name('Apple');
  $banana->set_name('Banana');
  
@@ -89,29 +90,23 @@ class Fruit {
 }
 
 $apple = new Fruit();
+
 $apple->set_name('Apple');
 $apple->set_color('Red');
+
 echo "Name: " . $apple->get_name();
 echo "<br>";
 echo "Color: " . $apple->get_color();
 ?>
 
-// The $this Keyword
-<?php
-class Fruit {
-  public $name;
-  function set_name($name) {
-    $this->name = $name;
-  }
-}
-$apple = new Fruit();
-$apple->set_name("Apple");
-?>
+
 <?php
 class Fruit {
   public $name;
 }
+
 $apple = new Fruit();
+
 $apple->name = "Apple";
 ?>
 
@@ -140,6 +135,7 @@ class Fruit {
 }
 
 $apple = new Fruit("Apple", "red");
+
 echo $apple->get_name();
 echo "<br>";
 echo $apple->get_color();
@@ -186,8 +182,162 @@ $mango->set_color('Yellow'); // ERROR
 $mango->set_weight('300'); // ERROR
 ?>
  # Inheritance
+
+
+
  # Constants
+
+
+
  # Abstract Classes
+
+
+
+
+
+
  # Traits
+ <?php
+ trait message1 {
+ public function msg1() {
+     echo "OOP is fun! ";
+   }
+ }
+ 
+ class Welcome {
+   use message1;
+ }
+ 
+ $obj = new Welcome();
+ $obj->msg1();
+ ?>
+
+<?php
+trait message1 {
+  public function msg1() {
+    echo "OOP is fun! ";
+  }
+}
+
+trait message2 {
+  public function msg2() {
+    echo "OOP reduces code duplication!";
+  }
+}
+
+class Welcome {
+  use message1;
+}
+
+class Welcome2 {
+  use message1, message2;
+}
+
+$obj = new Welcome();
+$obj->msg1();
+echo "<br>";
+
+$obj2 = new Welcome2();
+$obj2->msg1();
+$obj2->msg2();
+?>
+
+
  # Static Methods
+ <?php
+ class greeting {
+   public static function welcome() {
+     echo "Hello World!";
+   }
+ }
+ 
+ // Call static method
+ greeting::welcome();
+ ?>
+
+ <?php
+class greeting {
+  public static function welcome() {
+    echo "Hello World!";
+  }
+
+  public function __construct() {
+    self::welcome();
+  }
+}
+
+new greeting();
+?>
+
+<?php
+class greeting {
+  public static function welcome() {
+    echo "Hello World!";
+  }
+}
+
+class SomeOtherClass {
+  public function message() {
+    greeting::welcome();
+  }
+}
+?>
+
+<?php
+class domain {
+  protected static function getWebsiteName() {
+    return "W3Schools.com";
+  }
+}
+
+class domainW3 extends domain {
+  public $websiteName;
+  public function __construct() {
+    $this->websiteName = parent::getWebsiteName();
+  }
+}
+
+$domainW3 = new domainW3;
+echo $domainW3 -> websiteName;
+?>
+
  # Static Properties
+<?php
+class pi {
+  public static $value = 3.14159;
+}
+
+// Get static property
+echo pi::$value;
+?>
+
+<?php
+class pi {
+  public static $value=3.14159;
+  public function staticValue() {
+    return self::$value;
+  }
+}
+
+$pi = new pi();
+echo $pi->staticValue();
+?>
+
+<?php
+class pi {
+  public static $value=3.14159;
+}
+
+class x extends pi {
+  public function xStatic() {
+    return parent::$value;
+  }
+}
+
+// Get value of static property directly via child class
+echo x::$value;
+
+// or get value of static property via xStatic() method
+$x = new x();
+echo $x->xStatic();
+?>
